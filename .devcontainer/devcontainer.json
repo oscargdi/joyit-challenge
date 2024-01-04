@@ -28,5 +28,6 @@
         "editor.tabSize": 2
       }
     }
-  }
+  },
+  "postCreateCommand": "./.devcontainer/postCreateCommand.sh"
 }
