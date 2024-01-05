@@ -19,3 +19,13 @@ up:
 down:
 	@echo "Stopping..."
 	docker-compose down --remove-orphans
+
+.PHONY: test
+test: build
+	@echo "Testing..."
+	docker run --rm $(DOCKER_IMAGE_TAG) npm run test
+
+.PHONY: act
+act:
+	@echo "Running Act..."
+	act --container-architecture linux/amd64

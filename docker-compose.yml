@@ -12,6 +12,9 @@ services:
       REDIS_PORT: 6379
     ports:
       - 8080:3000
+    depends_on:
+      - db
+      - redis
 
   db:
     image: mysql:8.0.35
