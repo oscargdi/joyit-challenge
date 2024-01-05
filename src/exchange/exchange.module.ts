@@ -4,6 +4,8 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import * as redisStore from 'cache-manager-redis-store';
 import { RateController } from './rate/rate.controller';
 import { RateService } from './rate/rate.service';
+import { ResultController } from './result/result.controller';
+import { ResultService } from './result/result.service';
 
 @Module({
   imports: [
@@ -17,7 +19,7 @@ import { RateService } from './rate/rate.service';
       inject: [ConfigService],
     }),
   ],
-  controllers: [RateController],
-  providers: [RateService],
+  controllers: [RateController, ResultController],
+  providers: [RateService, ResultService],
 })
 export class ExchangeModule {}
