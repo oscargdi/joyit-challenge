@@ -1,23 +1,21 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsEnum, IsNotEmpty, IsNumber, IsString } from 'class-validator';
+import { IsEnum, IsNotEmpty, IsNumber } from 'class-validator';
 import { Currency } from '../../common/exchange-currency';
 
-export class UpdateRateDto {
+export class SetRateDto {
   @IsNotEmpty()
-  @IsString()
   @IsEnum(Currency)
   @ApiProperty({
-    description: 'Currency from which the rate is updated',
+    description: 'Currency from which the rate is set',
     enum: Currency,
     example: Currency.USD,
   })
   from: string;
 
   @IsNotEmpty()
-  @IsString()
   @IsEnum(Currency)
   @ApiProperty({
-    description: 'Currency to which the rate is updated',
+    description: 'Currency to which the rate is set',
     enum: Currency,
     example: Currency.EUR,
   })

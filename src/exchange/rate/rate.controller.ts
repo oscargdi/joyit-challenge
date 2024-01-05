@@ -1,6 +1,6 @@
 import { Body, Controller, HttpCode, Inject, Post } from '@nestjs/common';
 import { ApiResponse } from '@nestjs/swagger';
-import { UpdateRateDto } from './dto/update-rate.dto';
+import { SetRateDto } from './dto/set-rate.dto';
 import { RateService } from './rate.service';
 
 @Controller('rate')
@@ -10,10 +10,10 @@ export class RateController {
 
   @Post()
   @HttpCode(204)
-  @ApiResponse({ status: 204, description: 'Rate updated' })
+  @ApiResponse({ status: 204, description: 'Rate set' })
   @ApiResponse({ status: 400, description: 'Bad request' })
   @ApiResponse({ status: 500, description: 'Internal server error' })
-  async setRate(@Body() data: UpdateRateDto) {
+  async setRate(@Body() data: SetRateDto) {
     return this.rateService.setRate(data);
   }
 }
