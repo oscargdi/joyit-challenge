@@ -1,11 +1,14 @@
-import { Controller, Get, Inject, Query } from '@nestjs/common';
-import { ApiResponse, ApiTags } from '@nestjs/swagger';
+import { Controller, Get, Inject, Query, UseGuards } from '@nestjs/common';
+import { ApiBearerAuth, ApiResponse, ApiTags } from '@nestjs/swagger';
+import { JwtAuthGuard } from '../../auth/jwt.guard';
 import { ResultRequestDto } from './dto/result-request.dto';
 import { ResultResponseDto } from './dto/result-response.dto';
 import { ResultService } from './result.service';
 
 @Controller('result')
 @ApiTags('exchange')
+@ApiBearerAuth()
+@UseGuards(JwtAuthGuard)
 export class ResultController {
   @Inject()
   private readonly resultService: ResultService;

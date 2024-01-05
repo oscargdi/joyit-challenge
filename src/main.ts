@@ -21,6 +21,7 @@ async function bootstrap() {
     .setTitle('Exchange Rate Calculator')
     .setDescription('API for calculating exchange rates')
     .setVersion('1.0.0')
+    .addBearerAuth()
     .build();
 
   const document = SwaggerModule.createDocument(app, documentConfig);
