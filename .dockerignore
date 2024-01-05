@@ -1,0 +1,6 @@
+coverage
+dist
+Dockerfile
+node_modules
+README.md
+test
