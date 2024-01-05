@@ -1,10 +1,11 @@
 import { Controller, Get, Inject, Query } from '@nestjs/common';
-import { ApiResponse } from '@nestjs/swagger';
+import { ApiResponse, ApiTags } from '@nestjs/swagger';
 import { ResultRequestDto } from './dto/result-request.dto';
 import { ResultResponseDto } from './dto/result-response.dto';
 import { ResultService } from './result.service';
 
 @Controller('result')
+@ApiTags('exchange')
 export class ResultController {
   @Inject()
   private readonly resultService: ResultService;

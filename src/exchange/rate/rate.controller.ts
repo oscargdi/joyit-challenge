@@ -1,9 +1,10 @@
 import { Body, Controller, HttpCode, Inject, Post } from '@nestjs/common';
-import { ApiResponse } from '@nestjs/swagger';
+import { ApiResponse, ApiTags } from '@nestjs/swagger';
 import { SetRateDto } from './dto/set-rate.dto';
 import { RateService } from './rate.service';
 
 @Controller('rate')
+@ApiTags('exchange')
 export class RateController {
   @Inject()
   private readonly rateService: RateService;
