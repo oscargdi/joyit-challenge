@@ -42,5 +42,18 @@ describe('ResultService', () => {
         rate: 1.2,
       });
     });
+
+    it('should throw an error if the rate is not found', async () => {
+      jest.spyOn(cacheService, 'get').mockResolvedValueOnce(undefined);
+
+      await expect(
+        service.getResult({
+          from: 'USD',
+          to: 'EUR',
+          amount: 42,
+        }),
+      ).rejects.toThrow('Rate not found');
+      expect(cacheService.get).toHaveBeenCalledWith('USD_EUR');
+    });
   });
 });
