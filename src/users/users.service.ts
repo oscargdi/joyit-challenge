@@ -29,6 +29,10 @@ export class UsersService {
     return this.userRepository.findOneBy({ id });
   }
 
+  async findOneByUsername(username: string) {
+    return this.userRepository.findOneBy({ username });
+  }
+
   async update(id: string, updateUserDto: UpdateUserDto) {
     if (updateUserDto.password) {
       const salt = await bcrypt.genSalt();
