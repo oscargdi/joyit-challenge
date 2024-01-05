@@ -6,7 +6,12 @@ import {
   Post,
   UseGuards,
 } from '@nestjs/common';
-import { ApiBearerAuth, ApiResponse, ApiTags } from '@nestjs/swagger';
+import {
+  ApiBearerAuth,
+  ApiOperation,
+  ApiResponse,
+  ApiTags,
+} from '@nestjs/swagger';
 import { JwtAuthGuard } from '../../auth/jwt.guard';
 import { SetRateDto } from './dto/set-rate.dto';
 import { RateService } from './rate.service';
@@ -21,6 +26,7 @@ export class RateController {
 
   @Post()
   @HttpCode(204)
+  @ApiOperation({ summary: 'Set exchange rate' })
   @ApiResponse({ status: 204, description: 'Rate set' })
   @ApiResponse({ status: 400, description: 'Bad request' })
   @ApiResponse({ status: 500, description: 'Internal server error' })

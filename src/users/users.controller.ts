@@ -9,7 +9,13 @@ import {
   Post,
   UseGuards,
 } from '@nestjs/common';
-import { ApiBearerAuth, ApiParam, ApiResponse, ApiTags } from '@nestjs/swagger';
+import {
+  ApiBearerAuth,
+  ApiOperation,
+  ApiParam,
+  ApiResponse,
+  ApiTags,
+} from '@nestjs/swagger';
 import { JwtAuthGuard } from '../auth/jwt.guard';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
@@ -23,6 +29,9 @@ export class UsersController {
 
   @Post()
   @HttpCode(201)
+  @ApiOperation({
+    summary: 'Create a new user',
+  })
   @ApiResponse({
     status: 201,
     description: 'The record has been successfully created.',
@@ -35,6 +44,9 @@ export class UsersController {
   @Get()
   @UseGuards(JwtAuthGuard)
   @ApiBearerAuth()
+  @ApiOperation({
+    summary: 'Get all users',
+  })
   @ApiResponse({
     status: 200,
     description: 'The records has been successfully retrieved.',
@@ -47,6 +59,9 @@ export class UsersController {
   @Get(':id')
   @UseGuards(JwtAuthGuard)
   @ApiBearerAuth()
+  @ApiOperation({
+    summary: 'Get a user by id',
+  })
   @ApiParam({
     name: 'id',
     description: 'The id of the user',
@@ -66,6 +81,9 @@ export class UsersController {
   @HttpCode(204)
   @UseGuards(JwtAuthGuard)
   @ApiBearerAuth()
+  @ApiOperation({
+    summary: 'Update a user by id',
+  })
   @ApiParam({
     name: 'id',
     description: 'The id of the user',
@@ -84,6 +102,9 @@ export class UsersController {
   @HttpCode(204)
   @UseGuards(JwtAuthGuard)
   @ApiBearerAuth()
+  @ApiOperation({
+    summary: 'Delete a user by id',
+  })
   @ApiParam({
     name: 'id',
     description: 'The id of the user',
