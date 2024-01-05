@@ -14,7 +14,8 @@
         "esbenp.prettier-vscode",
         "mtxr.sqltools",
         "mtxr.sqltools-driver-mysql",
-        "rangav.vscode-thunder-client"
+        "rangav.vscode-thunder-client",
+        "ms-azuretools.vscode-docker"
       ],
       "settings": {
         "files.trimFinalNewlines": true,
